@@ -1,0 +1,36 @@
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Diretórios de build
+/build/
+target/
+bin/
+
+# Arquivos gerados automaticamente
+*.log
+*.tmp
+
+# Ignorar arquivos e pastas temporárias do SO
+.DS_Store
+Thumbs.db
+
+# IDEs
+*.iml
+.idea/
+
+# Bibliotecas externas (caso estejam salvas localmente)
+lib/
+
+# Maven ou Gradle (se estiver usando)
+*.war
+*.jar
+
+# Tomcat ou arquivos de execução
+/logs/
+/temp/
+/work/
+
+# classe não deve ser comitada
+
