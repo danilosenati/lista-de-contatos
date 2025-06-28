@@ -33,7 +33,7 @@ lib/
 /work/
 
 # classe não deve ser comitada
-src/main/java/model/DAO
+src/main/java/model/DAO.java
 
 # Ignorar o driver MariaDB
 src/main/webapp/WEB-INF/lib/mariadb-java-client-*.jar
