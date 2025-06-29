@@ -13,7 +13,7 @@ h1 {
 }
 
 .botao1{
-	text-decoration: nome;
+	text-decoration: none;
 	background-color: #EEE4B1;
 	padding: 5px 10px;
 	color: black;
