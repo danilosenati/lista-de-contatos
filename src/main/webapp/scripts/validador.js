@@ -10,17 +10,17 @@ function validar() {
 
 	if (nome === "") { // se o campo nome estiver vazio:
 		alert("Preencha o campo nome");
-		frmContato.nome.focus; // POSICIONA O MOUSE NOVAMENTE SOBRE O CAMPO NOME.
+		frmContato.nome.focus(); // POSICIONA O MOUSE NOVAMENTE SOBRE O CAMPO NOME.
 		return false; // SE O USUARIO NÃO PREENCHER A INFORMAÇÃO, O FORMULÁRIO NÃO ENVIARÁ AS INFORMAÇÕES PARA CAMADA CONTROLLER
 	}
 	else if (telefone === "") {
 		alert("Preencha o campo telefone");
-		frmContato.telefone.focus;
+		frmContato.telefone.focus();
 		return false;
 	}
 	else if(email === ""){
 		alert("Preencha o campo e-mail");
-				frmContato.email.focus;
+				frmContato.email.focus();
 				return false;
 	}
 	else{
