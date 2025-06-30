@@ -12,6 +12,21 @@ h1 {
   	font-weight: 700; /* Bold */
 }
 
+.caixa1{
+	width: 300px;
+	padding: 4px;
+	margin-bottom: 10px;
+	border: 1px solid #66bbff;
+	border-radius: 5px;
+}
+
+.caixa2{
+	padding: 4px;
+	margin-bottom: 10px;
+	border: 1px solid #66bbff;
+	border-radius: 5px;
+}
+
 .botao1{
 	text-decoration: none;
 	background-color: #EEE4B1;
@@ -20,4 +35,6 @@ h1 {
 	font-size: 1.2em;
 	font-weight: 700; /* Bold */ 
 	border-radius: 5px;
+	border:0;
+	cursor: pointer;
 }
