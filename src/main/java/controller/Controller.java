@@ -69,6 +69,9 @@ public class Controller extends HttpServlet {
 				contato.setTelefone(request.getParameter("telefone"));
 				contato.setEmail(request.getParameter("email"));
 				
+				// INVOCAR O MÉTODO inserirContato PASSANDO O OBJETO CONTATO
+				conexaoDAO.inserirContato(contato);
+				
 		}
 
 }
