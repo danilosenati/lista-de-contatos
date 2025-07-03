@@ -7,16 +7,26 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+	
 	<h1>Criar novo contato</h1>
 	<form name="frmContato" action="insert">
 		<table>
 			<tr>
 				<td><input type="text" name="nome" placeholder="Nome"
-					class="caixa1"></td>
+					onpaste="return false" ondrop="return false" class="caixa1">
+				</td>
 			</tr>
 			<tr>
-				<td><input type="tel" name="telefone" placeholder="Telefone"
-					class="caixa2"></td>
+				<td>
+					<input type="tel" name="telefone" placeholder="Telefone"
+					class="caixa2" id="telefone" maxlength="11" inputmode="numeric"
+					pattern="[0-9]{10,11}"
+					title="Digite apenas números com DDD (10 ou 11 dígitos)"> <!--
+					 pattern="[0-9]{10,11}" → aceita apenas 10 ou 11 números (como um telefone com DDD).
+					  
+					 inputmode="numeric" → força teclado numérico em celulares.
+					 -->
+				</td>
 			</tr>
 			<tr>
 				<td><input type="email" name="email" placeholder="E-mail"
@@ -31,8 +41,11 @@
 	<!-- SCRIPT PARA EXECUÇÃO DO VALIDOR.JS -->
 	<script src="./scripts/validador.js"></script>
 	
-	
-	
+	<!-- SCRIPT PARA verificação do telefone.js -->
+	<script src="./scripts/telefone.js"></script>
+
+
+
 
 </body>
 </html>
