@@ -72,6 +72,9 @@ public class Controller extends HttpServlet {
 				// INVOCAR O MÉTODO inserirContato PASSANDO O OBJETO CONTATO
 				conexaoDAO.inserirContato(contato);
 				
+				// REDIRECIONAR PARA O DOCUMENTO AGENDA.JSP
+				response.sendRedirect("main");
+				
 		}
 
 }
