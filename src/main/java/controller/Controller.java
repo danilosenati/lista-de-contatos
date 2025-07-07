@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import model.DAO; // IMPORTANTO CLASSE DAO PARA EXECUTAR O TESTE DE CONEXAO.
 import model.JavaBeans;
 
@@ -16,7 +18,7 @@ public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	// INSTANCIANDO E CRIANDO UM OBJETO PARA REALIZAR O TESTE DE CONEXÃO:
-	DAO conexaoDAO = new DAO();
+	DAO dao = new DAO();
 	
 	JavaBeans contato = new JavaBeans();
 	
@@ -53,8 +55,9 @@ public class Controller extends HttpServlet {
 	protected void contatos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// REDIRECIONAR A REQUISIÇÃO AO DOCUMENTO AGENDA.JSP:
-		response.sendRedirect("Agenda.jsp");
+		// Criando um objeto que irá receber os dados JavaBeans:
+		ArrayList<JavaBeans> lista = dao.listarContatos();
+		
 	}
 	
 	// NOVO CONTATO:
@@ -70,7 +73,7 @@ public class Controller extends HttpServlet {
 				contato.setEmail(request.getParameter("email"));
 				
 				// INVOCAR O MÉTODO inserirContato PASSANDO O OBJETO CONTATO
-				conexaoDAO.inserirContato(contato);
+				dao.inserirContato(contato);
 				
 				// REDIRECIONAR PARA O DOCUMENTO AGENDA.JSP
 				response.sendRedirect("main");
