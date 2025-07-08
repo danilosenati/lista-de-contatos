@@ -1,13 +1,14 @@
 package controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import model.DAO; // IMPORTANTO CLASSE DAO PARA EXECUTAR O TESTE DE CONEXAO.
 import model.JavaBeans;
 
@@ -58,6 +59,10 @@ public class Controller extends HttpServlet {
 		// Criando um objeto que irá receber os dados JavaBeans:
 		ArrayList<JavaBeans> lista = dao.listarContatos();
 		
+		// Encaminhar a lsita ao documento agenda.jsp
+		request.setAttribute("contatos", lista);
+		RequestDispatcher rd = request.getRequestDispatcher("agenda.jsp");
+		rd.forward(request, response);
 	}
 	
 	// NOVO CONTATO:
