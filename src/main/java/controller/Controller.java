@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.DAO; // IMPORTANTO CLASSE DAO PARA EXECUTAR O TESTE DE CONEXAO.
 import model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert" }) // AS REQUISIÇÕES SÃO RECEBIDAS ATRAVÉS DE URLs (CAMINHOS
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select" }) // AS REQUISIÇÕES SÃO RECEBIDAS ATRAVÉS DE URLs (CAMINHOS
 														// DEFINIDOS EM FORMULARIOS, BOTÕES ETC), CONFIGURADAS NESTA
 														// LINHA.
 public class Controller extends HttpServlet {
@@ -45,6 +45,9 @@ public class Controller extends HttpServlet {
 		} else if(action.equals("/insert")) { // SE O CONTEUDO DE ACTION FOR IGUAL A /INSERT
 			// SE O METODO TOGET RECEBER A REQUISIÇÃO /INSERT, REDIRECIONE PARA O MÉTODO novoContato()
 			novoContato(request, response);
+		} else if(action.equals("/select")) { // SE O CONTEUDO DE ACTION FOR IGUAL A /select
+			// SE O METODO TOGET RECEBER A REQUISIÇÃO /select, REDIRECIONE PARA O MÉTODO listarContato()
+			listarContato(request, response);
 		}
 		else {
 			response.sendRedirect("index.html");
@@ -83,6 +86,18 @@ public class Controller extends HttpServlet {
 				// REDIRECIONAR PARA O DOCUMENTO AGENDA.JSP
 				response.sendRedirect("main");
 				
+		}
+		
+	// EDITAR CONTATO:
+		protected void listarContato(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			
+			// Recebimento do id do contato que será editado:
+			String idContato = request.getParameter("idContato");
+			
+			System.out.println(idContato);
+			
+			
 		}
 
 }
