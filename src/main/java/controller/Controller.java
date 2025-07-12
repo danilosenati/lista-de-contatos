@@ -101,11 +101,7 @@ public class Controller extends HttpServlet {
 			// EXECUTAR O METODO SELECIONAR CONTATO:
 			dao.selecionarContato(contato);
 			
-			// teste de recebimento:
-			System.out.println(contato.getIdContato());
-			System.out.println(contato.getNome());
-			System.out.println(contato.getTelefone());
-			System.out.println(contato.getEmail());
+		
 			
 		}
 
