@@ -62,7 +62,7 @@ public class Controller extends HttpServlet {
 		// Criando um objeto que irá receber os dados JavaBeans:
 		ArrayList<JavaBeans> lista = dao.listarContatos();
 		
-		// Encaminhar a lsita ao documento agenda.jsp
+		// Encaminhar a lista ao documento agenda.jsp
 		request.setAttribute("contatos", lista);
 		RequestDispatcher rd = request.getRequestDispatcher("agenda.jsp");
 		rd.forward(request, response);
@@ -101,8 +101,15 @@ public class Controller extends HttpServlet {
 			// EXECUTAR O METODO SELECIONAR CONTATO:
 			dao.selecionarContato(contato);
 			
-		
+			// Setar os atributos do formulário com o conteúdo JavaBeans:
 			
+			request.setAttribute("idcontato", contato.getIdContato());
+			request.setAttribute("nome", contato.getNome());
+			request.setAttribute("telefone", contato.getTelefone());
+			request.setAttribute("email", contato.getEmail());
+			
+			RequestDispatcher rd = request.getRequestDispatcher("editar.jsp");
+			rd.forward(request, response);
 		}
 
 }
