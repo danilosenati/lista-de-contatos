@@ -93,9 +93,10 @@ public class Controller extends HttpServlet {
 				throws ServletException, IOException {
 			
 			// Recebimento do id do contato que será editado:
-			String idContato = request.getParameter("idContato");
+			int idContato = Integer.parseInt(request.getParameter("idContato"));
 			
-			System.out.println(idContato);
+			// SETANDO A VARIAVEL JavaBeans:
+			contato.setIdContato(idContato);
 			
 			
 		}
