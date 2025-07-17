@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.DAO; // IMPORTANTO CLASSE DAO PARA EXECUTAR O TESTE DE CONEXAO.
 import model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select" }) // AS REQUISIÇÕES SÃO RECEBIDAS ATRAVÉS DE URLs (CAMINHOS
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update" }) // AS REQUISIÇÕES SÃO RECEBIDAS ATRAVÉS DE URLs (CAMINHOS
 														// DEFINIDOS EM FORMULARIOS, BOTÕES ETC), CONFIGURADAS NESTA
 														// LINHA.
 public class Controller extends HttpServlet {
@@ -48,6 +48,10 @@ public class Controller extends HttpServlet {
 		} else if(action.equals("/select")) { // SE O CONTEUDO DE ACTION FOR IGUAL A /select
 			// SE O METODO TOGET RECEBER A REQUISIÇÃO /select, REDIRECIONE PARA O MÉTODO listarContato()
 			listarContato(request, response);
+		}
+		else if(action.equals("/update")) { // SE O CONTEUDO DE ACTION FOR IGUAL A /update
+			// SE O METODO TOGET RECEBER A REQUISIÇÃO /update, REDIRECIONE PARA O MÉTODO editarContato()
+			editarContato(request, response);
 		}
 		else {
 			response.sendRedirect("index.html");
@@ -88,7 +92,7 @@ public class Controller extends HttpServlet {
 				
 		}
 		
-	// EDITAR CONTATO:
+	// EDITAR CONTATO: 1º lista o contato que será alterado:
 		protected void listarContato(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
 			
@@ -97,6 +101,30 @@ public class Controller extends HttpServlet {
 			
 			// SETANDO A VARIAVEL JavaBeans:
 			contato.setIdContato(idContato);
+			
+			// EXECUTAR O METODO SELECIONAR CONTATO:
+			dao.selecionarContato(contato);
+			
+			// Setar os atributos do formulário com o conteúdo JavaBeans:
+			
+			request.setAttribute("idcontato", contato.getIdContato());
+			request.setAttribute("nome", contato.getNome());
+			request.setAttribute("telefone", contato.getTelefone());
+			request.setAttribute("email", contato.getEmail());
+			
+			RequestDispatcher rd = request.getRequestDispatcher("editar.jsp");
+			rd.forward(request, response);
+		}
+
+	// EDITAR CONTATO: 2º Realiza a edição do contato:
+		protected void editarContato(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			
+			// SETANDO AS VARIAVEIS JavaBeans:
+			contato.setIdContato(request.getParameter("idcontato"));
+			contato.setNome(request.getParameter("nome"));
+			contato.setTelefone(request.getParameter("telefone"));
+			contato.setEmail(request.getParameter("email"));
 			
 			// EXECUTAR O METODO SELECIONAR CONTATO:
 			dao.selecionarContato(contato);
